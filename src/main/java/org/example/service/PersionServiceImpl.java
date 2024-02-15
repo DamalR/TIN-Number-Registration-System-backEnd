@@ -41,7 +41,6 @@ public class PersionServiceImpl implements persionService{
             return false;
         }
     }
-
     @Override
     public Persion getPersionById(Long id) {
         Optional<PersionEntity> byId = repository.findById(id);

@@ -4,6 +4,7 @@ import org.example.dto.Persion;
 import org.example.entity.PersionEntity;
 import org.example.service.PersionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,14 +22,15 @@ public class PersionController {
     public Iterable<PersionEntity> getPersion(){
         return service.getPersion();
     }
-    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("/{id}")
     public String deletePersion(@PathVariable Long id){
         service.deletePersion(id);
         return "Deleted";
     }
-    @GetMapping("serach/{id}")
+    @GetMapping("/serach/{id}")
     public Persion getPersionById(@PathVariable Long id){
-        return getPersionById(id);
+        return service.getPersionById(id);
     }
 
 
